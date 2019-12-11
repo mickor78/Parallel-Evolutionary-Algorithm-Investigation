@@ -46,7 +46,7 @@ public class Genotype implements Comparable<Genotype> {
     @Override
     public int compareTo(Genotype anotherGenotype) {
         if (rate == anotherGenotype.getRate()) return 0;
-        else return rate.compareTo(anotherGenotype.getRate());
+        else return Math.abs(rate) > Math.abs(anotherGenotype.getRate()) ? 1 : -1;
     }
 }
 

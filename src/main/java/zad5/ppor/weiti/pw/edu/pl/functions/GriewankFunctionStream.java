@@ -17,7 +17,7 @@ public class GriewankFunctionStream implements FunctionToOptimize{
 
         double sum = IntStream.range(1,x.length)
                 .parallel()
-                .mapToDouble(i -> x[i])
+                .mapToDouble(i -> x[i]*x[i])
                 .sum();
 
         return sum / 40 + 1 - product;

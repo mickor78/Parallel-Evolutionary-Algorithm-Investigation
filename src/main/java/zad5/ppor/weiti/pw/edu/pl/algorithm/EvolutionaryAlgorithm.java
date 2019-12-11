@@ -16,17 +16,18 @@ public class EvolutionaryAlgorithm {
     public Genotype findBestGenotype(final Population population) {
         Population temp = population;
         System.out.println();
-        System.out.println(algorithmSteps.bestGenotype(temp).getRate());
+        System.out.println("\t"+algorithmSteps.bestGenotype(temp).getRate());
         double result = Double.POSITIVE_INFINITY;
-        double epsilon = 5;
+        double epsilon = 40;
         int iterations = 0;
         while (Math.abs(result) > epsilon) {
             iterations++;
+            System.out.println(result);
             result = 0 - algorithmSteps.bestGenotype(temp).getRate();
             temp = algorithmSteps.reproduction(temp);
             temp = algorithmSteps.selection(temp);
         }
-        System.out.println(iterations);
+        System.out.println("Iterations: " + iterations);
         return algorithmSteps.bestGenotype(temp);
     }
 }

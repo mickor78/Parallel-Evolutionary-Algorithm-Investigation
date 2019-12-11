@@ -26,21 +26,21 @@ public class EvolutionaryAlgorithmStepsStepsDefaultImpl implements EvolutionaryA
                         .parallelStream()
                         .map(genotype -> genotype.withRate(functionObject.function(genotype.getGenotype())))
                         .sorted()
-                        .limit(50)
+                        .limit(1000)
                         .parallel()
                         .collect(Collectors.toList())));
     }
 
     @Override
     public Population reproduction(final Population inputPopulation) {
-        int powerLambda = 20;
+        int powerLambda = 400;
 
         ArrayList<Genotype> parentGenotype = inputPopulation.getPopulation();
         Collections.shuffle(parentGenotype);
         Population T = new Population(new ArrayList<>(parentGenotype.subList(0, powerLambda)));
 
         ArrayList<Genotype> childGenotype;
-        if (new Random().nextInt() % 100 == 0) {
+        if (new Random().nextInt() % 50 == 0) {
             childGenotype = mutation(crossover(T)).getPopulation();
         } else {
             childGenotype = crossover(T).getPopulation();
@@ -77,8 +77,8 @@ public class EvolutionaryAlgorithmStepsStepsDefaultImpl implements EvolutionaryA
                         .map(genotype -> {
                             Double[] genotypeWrapped = ArrayUtils.toObject(genotype.getGenotype());
 
-                            for (int i = 0; i < Math.abs(new Random().nextInt() % 50); i++) {
-                                genotypeWrapped[Math.abs(new Random().nextInt() % 50)] = new Random().nextDouble() * 80 - 40;
+                            for (int i = 0; i < Math.abs(new Random().nextInt() % 500); i++) {
+                                genotypeWrapped[Math.abs(new Random().nextInt() % genotypeWrapped.length)] = new Random().nextDouble() * 80 - 40;
                             }
                             return genotypeWrapped;
                         })
