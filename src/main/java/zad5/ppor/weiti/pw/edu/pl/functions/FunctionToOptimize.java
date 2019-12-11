@@ -1,5 +1,5 @@
-package zad5.ppor.weiti.pw.edu.pl.functions.griewank;
+package zad5.ppor.weiti.pw.edu.pl.functions;
 
-public interface GriewankFunction {
-    double griewankFunction(double[] x);
+public interface FunctionToOptimize {
+    double function(double[] x);
 }
