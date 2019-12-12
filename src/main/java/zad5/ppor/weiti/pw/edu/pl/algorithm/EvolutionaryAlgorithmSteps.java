@@ -2,6 +2,9 @@ package zad5.ppor.weiti.pw.edu.pl.algorithm;
 
 import javafx.util.Pair;
 import org.apache.commons.lang3.ArrayUtils;
+import org.knowm.xchart.QuickChart;
+import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.XYChart;
 import zad5.ppor.weiti.pw.edu.pl.Constants;
 import zad5.ppor.weiti.pw.edu.pl.utilities.Genotype;
 import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
@@ -154,6 +157,10 @@ public class EvolutionaryAlgorithmSteps {
          * @return
          */
         public static Population crossover(final Population inputPopulation) {
+
+
+
+
             int populationSize = inputPopulation.getPopulation().size();
             ArrayList<Genotype> T = inputPopulation.getPopulation();
             Random rnd = new Random();
@@ -184,8 +191,10 @@ public class EvolutionaryAlgorithmSteps {
                             .map(genotype -> {
                                 Double[] genotypeWrapped = ArrayUtils.toObject(genotype.getGenotype());
 
-                                for (int i = 0; i < (int) (genotypeWrapped.length * Constants.Algorothm.PROBABILITY_OF_GENE_MUTATION); i++) {
-                                    genotypeWrapped[Math.abs(new Random().nextInt()) % genotypeWrapped.length] = new Random().nextDouble() * 80 - 40;
+                                for (int i = 0; i < genotypeWrapped.length; i++) {
+                                    genotypeWrapped[i] = new Random().nextDouble() < Constants.Algorothm.PROBABILITY_OF_GENE_MUTATION
+                                            ? new Random().nextDouble() * 80 - 40
+                                            : genotypeWrapped[i];
                                 }
                                 return genotypeWrapped;
                             })
@@ -212,6 +221,18 @@ public class EvolutionaryAlgorithmSteps {
             return result.stream();
         }
 
+        public static void showPlot(Population temp, double[] x) {
+            double[] y;
+            y = ArrayUtils.toPrimitive(temp.getPopulation()
+                    .stream()
+                    .map(Genotype::getRate)
+                    .collect(Collectors.toList())
+                    .toArray(new Double[]{}));
+
+            XYChart chart;
+            chart = QuickChart.getChart("Sample Chart", "X", "Y", "y(x)", x, y);
+            new SwingWrapper(chart).displayChart();
+        }
     }
 
 }

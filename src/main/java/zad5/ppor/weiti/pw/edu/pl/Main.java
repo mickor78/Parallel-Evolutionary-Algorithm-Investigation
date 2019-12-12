@@ -13,45 +13,35 @@ import java.util.concurrent.ForkJoinPool;
 public class Main {
     public static void main(String[] args) {
         Population x = new Population(
-                1000,
+                10000,
                 100
         );
-
-        Population[] y = new Population[4];
-        for (int i = 0; i < y.length; i++) {
-            y[i] = new Population(1250, 100);
-        }
+        Population y = new Population(
+                10000,
+                100
+        );
 
         AcleyFunction af = new AcleyFunction();
         GriewankFunction gf = new GriewankFunction();
 
-//        EvolutionaryAlgorithmSteps.Static.calculateFunction(x,gf,8);
-//        while (EvolutionaryAlgorithmSteps.Static.bestGenotype(x).getRate() > 500 || EvolutionaryAlgorithmSteps.Static.bestGenotype(x).getRate() < 400) {
-//            x = new Population(
-//                    100,
-//                    100
-//                );
-//            EvolutionaryAlgorithmSteps.Static.calculateFunction(x,gf,8);
-//            System.out.println(EvolutionaryAlgorithmSteps.Static.bestGenotype(x).getRate());
-//        }
 
         EvolutionaryAlgorithmOnePopulation eaop = new EvolutionaryAlgorithmOnePopulation(
-                20, af
+                4, af
         );
 
         EvolutionaryAlgorithmFewPopulations eafp = new EvolutionaryAlgorithmFewPopulations(
-                af, 4
+                af, 4,4
         );
 
 
-        eaop.findBestGenotype(x,2).getRate();
+        System.out.println(eaop.findBestGenotype(x, Double.NEGATIVE_INFINITY, 120).getRate());
 
         ForkJoinPool forkJoinPool = null;
         double rank;
         try {
             forkJoinPool = new ForkJoinPool(4);
             rank = forkJoinPool.submit(()->
-                    eafp.findBestGenotype(y,2).getRate()
+                    eafp.findBestGenotype(y,Double.NEGATIVE_INFINITY,120).getRate()
             ).get();
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
@@ -60,6 +50,8 @@ public class Main {
                 forkJoinPool.shutdown();
             }
         }
+
+        System.out.println(rank);
 
     }
 }

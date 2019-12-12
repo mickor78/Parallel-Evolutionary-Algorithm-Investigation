@@ -9,8 +9,8 @@ public class Constants {
             throw new AssertionError();
         }
     }
-
     public static class Genotype {
+
         public static final int FEATURES_NUM_IN_2_FT_GENOTYPE = 2;
         public static final int FEATURES_NUM_IN_10_FT_GENOTYPE = 10;
         public static final int FEATURES_NUM_IN_20_FT_GENOTYPE = 20;
@@ -21,8 +21,8 @@ public class Constants {
             throw new AssertionError();
         }
     }
-
     public static class Population {
+
         public static final int POPULATION_SIZE_10 = 10;
         public static final int POPULATION_SIZE_50 = 50;
         public static final int POPULATION_SIZE_100 = 100;
@@ -34,10 +34,11 @@ public class Constants {
         }
     }
     public static class Algorothm {
-        public static final double NUMBER_OF_LAMBDA_POPULATION = 0.7;
-        public static final double PROBABILITY_OF_GENE_MUTATION = 0.01;
-        public static final double NUMBER_OF_GENOTYPES_TO_EXCHANGE = 0.4;
-        public static final double NUMBER_OF_POPULATION_TO_CROSSOVER = 0.6;
+        public static final long NANOSEC_PER_SEC = 1000l*1000*1000;
+        public static final double NUMBER_OF_LAMBDA_POPULATION = 0.3;
+        public static final double PROBABILITY_OF_GENE_MUTATION = 0.05;
+        public static final double NUMBER_OF_GENOTYPES_TO_EXCHANGE = 0.1;
+        public static final double NUMBER_OF_POPULATION_TO_CROSSOVER = 0.3;
         public static final double NUMBER_OF_ITERATION_BEFORE_CROSOVER = 100;
 
 
@@ -45,5 +46,8 @@ public class Constants {
             throw new AssertionError();
         }
 
+    }
+    public static class Presentation{
+        public static final boolean MODE = false;
     }
 }
