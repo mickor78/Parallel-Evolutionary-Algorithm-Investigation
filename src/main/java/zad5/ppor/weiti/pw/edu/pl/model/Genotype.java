@@ -1,4 +1,4 @@
-package zad5.ppor.weiti.pw.edu.pl.utilities;
+package zad5.ppor.weiti.pw.edu.pl.model;
 
 import org.apache.commons.lang3.ArrayUtils;
 import zad5.ppor.weiti.pw.edu.pl.Constants;
@@ -49,32 +49,3 @@ public class Genotype implements Comparable<Genotype> {
         else return Math.abs(rate) > Math.abs(anotherGenotype.getRate()) ? 1 : -1;
     }
 }
-
-
-/*
-final int parallelism = 4;
-ForkJoinPool forkJoinPool = null;
-try {
-    forkJoinPool = new ForkJoinPool(parallelism);
-    final List<Integer> primes = forkJoinPool.submit(() ->
-        // Parallel task here, for example
-        IntStream.range(1, 1_000_000).parallel()
-                .filter(PrimesPrint::isPrime)
-                .boxed().collect(Collectors.toList())
-    ).get();
-    System.out.println(primes);
-} catch (InterruptedException | ExecutionException e) {
-    throw new RuntimeException(e);
-} finally {
-    if (forkJoinPool != null) {
-        forkJoinPool.shutdown();
-    }
-}
-
-
- //Parallel Sorting slower for lesser elements
-        Arrays.parallelSort(intArray);
-
-
-        ArrayList<String> list = Collections.synchronizedList(new ArrayList<String>());
- */

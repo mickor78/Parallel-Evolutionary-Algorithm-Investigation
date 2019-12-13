@@ -1,4 +1,4 @@
-package zad5.ppor.weiti.pw.edu.pl.utilities;
+package zad5.ppor.weiti.pw.edu.pl.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +7,7 @@ public class Population {
     private ArrayList<Genotype> population;
 
     public Population(Genotype[] population) {
-        this.population = new ArrayList<Genotype>();
+        this.population = new ArrayList<>();
         Collections.addAll(this.population, population);
     }
 
@@ -16,7 +16,7 @@ public class Population {
     }
 
     public Population(int populationSize, int numberOfFeatures) {
-        this.population = new ArrayList<Genotype>();
+        this.population = new ArrayList<>();
         for (int i = 0; i < populationSize; i++) {
             population.add(new Genotype(numberOfFeatures));
         }

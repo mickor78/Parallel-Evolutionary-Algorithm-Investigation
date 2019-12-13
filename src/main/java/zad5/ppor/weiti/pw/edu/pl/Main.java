@@ -2,10 +2,9 @@ package zad5.ppor.weiti.pw.edu.pl;
 
 import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmFewPopulations;
 import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmOnePopulation;
-import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmSteps;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunction;
 import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunction;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
+import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;

@@ -1,23 +1,21 @@
 package zad5.ppor.weiti.pw.edu.pl.algorithm;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.knowm.xchart.QuickChart;
-import org.knowm.xchart.SwingWrapper;
-import org.knowm.xchart.XYChart;
 import zad5.ppor.weiti.pw.edu.pl.Constants;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Genotype;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
+import zad5.ppor.weiti.pw.edu.pl.model.Genotype;
+import zad5.ppor.weiti.pw.edu.pl.model.Population;
+import zad5.ppor.weiti.pw.edu.pl.utilities.PrintSolution;
 
 import java.io.IOException;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
 public class EvolutionaryAlgorithmOnePopulation {
 
-    public final Function<double[], Double> functionToOptimize;
+    private final Function<double[], Double> functionToOptimize;
     private final int numOfThreedsToFork;
+    private final PrintSolution printer = new PrintSolution();
+
 
     public EvolutionaryAlgorithmOnePopulation(int numOfThreedsToFork, Function<double[], Double> functionToOptimize) {
         this.numOfThreedsToFork = numOfThreedsToFork;
@@ -29,8 +27,9 @@ public class EvolutionaryAlgorithmOnePopulation {
         Population temp = population;
         double result;
         int iterations = 0;
-        temp = EvolutionaryAlgorithmSteps.Static.calculateFunction(temp, functionToOptimize, numOfThreedsToFork);
-        result = 0 - EvolutionaryAlgorithmSteps.Static.bestGenotype(temp).getRate();
+        EvolutionaryAlgorithmStepsStreamsImp algSteps = new EvolutionaryAlgorithmStepsStreamsImp();
+        temp = algSteps.calculateFunction(temp, functionToOptimize, numOfThreedsToFork);
+        result = 0 - algSteps.bestGenotype(temp).getRate();
         if(Constants.Presentation.MODE) System.out.println(result);
 
         double[] x;
@@ -39,7 +38,7 @@ public class EvolutionaryAlgorithmOnePopulation {
             x = IntStream.range(0, population.getPopulation().size())
                     .mapToDouble(i -> (double) i)
                     .toArray();
-            EvolutionaryAlgorithmSteps.Static.showPlot(temp, x);
+            printer.showPlot(temp, x);
             try {
                 System.out.println("press key");
                 System.in.read();
@@ -52,18 +51,18 @@ public class EvolutionaryAlgorithmOnePopulation {
         long startTime = System.nanoTime();
 
         while (Math.abs(result) > epsilon) {
-            if (Constants.Presentation.MODE) EvolutionaryAlgorithmSteps.Static.showPlot(temp, x);
+            if (Constants.Presentation.MODE) printer.showPlot(temp, x);
             if((System.nanoTime()-startTime)> seconds*Constants.Algorothm.NANOSEC_PER_SEC) break;
 
 
             iterations++;
-            temp = EvolutionaryAlgorithmSteps.Static.reproduction(temp, numOfThreedsToFork);
-            temp = EvolutionaryAlgorithmSteps.Static.calculateFunction(temp, functionToOptimize, numOfThreedsToFork);
-            temp = EvolutionaryAlgorithmSteps.Static.selectionWithThreeds(temp, population.getPopulation().size(), numOfThreedsToFork);
-            result = 0 - EvolutionaryAlgorithmSteps.Static.bestGenotype(temp).getRate();
+            temp = algSteps.reproduction(temp, numOfThreedsToFork);
+            temp = algSteps.calculateFunction(temp, functionToOptimize, numOfThreedsToFork);
+            temp = algSteps.selection(temp, population.getPopulation().size(), numOfThreedsToFork);
+            result = 0 - algSteps.bestGenotype(temp).getRate();
             if(Constants.Presentation.MODE)System.out.println(result);
         }
-        return EvolutionaryAlgorithmSteps.Static.bestGenotype(temp);
+        return algSteps.bestGenotype(temp);
     }
 
 }

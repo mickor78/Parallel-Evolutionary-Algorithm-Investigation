@@ -5,10 +5,8 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunction;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunctionStream;
-import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunction;
-import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunctionStream;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Genotype;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
+import zad5.ppor.weiti.pw.edu.pl.model.Genotype;
+import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;

@@ -48,6 +48,6 @@ public class Constants {
 
     }
     public static class Presentation{
-        public static final boolean MODE = false;
+        public static final boolean MODE = true;
     }
 }

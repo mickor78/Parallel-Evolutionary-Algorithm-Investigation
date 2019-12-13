@@ -4,14 +4,14 @@
 //import org.openjdk.jmh.infra.Blackhole;
 //import zad5.ppor.weiti.pw.edu.pl.Constants;
 //import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmOnePopulation;
-//import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmSteps;
+//import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmStepsStreamsImp;
 //import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmStepsStepsDefaultImpl;
 //import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmFewPopulations;
 //import zad5.ppor.weiti.pw.edu.pl.functions.FunctionToOptimize;
 //import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunction;
 //import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunctionStream;
-//import zad5.ppor.weiti.pw.edu.pl.utilities.Genotype;
-//import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
+//import zad5.ppor.weiti.pw.edu.pl.model.Genotype;
+//import zad5.ppor.weiti.pw.edu.pl.model.Population;
 //
 //import java.util.List;
 //import java.util.concurrent.ExecutionException;
@@ -199,8 +199,8 @@
 //        public Population population;
 //        FunctionToOptimize fto;
 //        FunctionToOptimize fto_stream;
-//        EvolutionaryAlgorithmSteps steps;
-//        EvolutionaryAlgorithmSteps steps_stream;
+//        EvolutionaryAlgorithmStepsStreamsImp steps;
+//        EvolutionaryAlgorithmStepsStreamsImp steps_stream;
 //        EvolutionaryAlgorithmOnePopulation mu_lambda;
 //        EvolutionaryAlgorithmOnePopulation mu_lambda_stream;
 //

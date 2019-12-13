@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmFewPopulations;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunction;
-import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunction;
-import zad5.ppor.weiti.pw.edu.pl.utilities.Population;
+import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
 import java.util.Arrays;
 import java.util.Collection;
