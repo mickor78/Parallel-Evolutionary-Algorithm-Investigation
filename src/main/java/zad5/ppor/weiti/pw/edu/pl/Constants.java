@@ -38,7 +38,7 @@ public class Constants {
         public static final double NUMBER_OF_LAMBDA_POPULATION = 0.3;
         public static final double PROBABILITY_OF_GENE_MUTATION = 0.05;
         public static final double NUMBER_OF_GENOTYPES_TO_EXCHANGE = 0.1;
-        public static final double NUMBER_OF_POPULATION_TO_CROSSOVER = 0.3;
+        public static final double NUMBER_OF_POPULATION_TO_CROSSOVER = 0.6;
         public static final double NUMBER_OF_ITERATION_BEFORE_CROSOVER = 100;
 
 

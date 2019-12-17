@@ -33,12 +33,12 @@ public class Main {
         );
 
 
-        System.out.println(eaop.findBestGenotype(x, Double.NEGATIVE_INFINITY, 120).getRate());
+//        System.out.println(eaop.findBestGenotype(x, Double.NEGATIVE_INFINITY, 120).getRate());
 
         ForkJoinPool forkJoinPool = null;
         double rank;
         try {
-            forkJoinPool = new ForkJoinPool(4);
+            forkJoinPool = new ForkJoinPool(8);
             rank = forkJoinPool.submit(()->
                     eafp.findBestGenotype(y,Double.NEGATIVE_INFINITY,120).getRate()
             ).get();

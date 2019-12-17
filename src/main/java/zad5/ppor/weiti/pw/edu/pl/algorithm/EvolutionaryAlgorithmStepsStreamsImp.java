@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static zad5.ppor.weiti.pw.edu.pl.Constants.Range.MAX_FEATURE_IN_GENOTYPE;
+import static zad5.ppor.weiti.pw.edu.pl.Constants.Range.MIN_FEATURE_IN_GENOTYPE;
+
 public final class EvolutionaryAlgorithmStepsStreamsImp implements EvolutionaryAlgorithmSteps {
 
     @Override
@@ -161,7 +164,7 @@ public final class EvolutionaryAlgorithmStepsStreamsImp implements EvolutionaryA
 
                             for (int i = 0; i < genotypeWrapped.length; i++) {
                                 genotypeWrapped[i] = new Random().nextDouble() < Constants.Algorothm.PROBABILITY_OF_GENE_MUTATION
-                                        ? new Random().nextDouble() * 80 - 40
+                                        ? new Random().nextDouble() * Math.abs(MAX_FEATURE_IN_GENOTYPE-MIN_FEATURE_IN_GENOTYPE) - MAX_FEATURE_IN_GENOTYPE
                                         : genotypeWrapped[i];
                             }
                             return genotypeWrapped;

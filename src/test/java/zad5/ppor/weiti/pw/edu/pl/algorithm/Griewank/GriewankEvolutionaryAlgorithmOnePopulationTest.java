@@ -2,6 +2,7 @@ package zad5.ppor.weiti.pw.edu.pl.algorithm.Griewank;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.function.Function;
 
 @RunWith(Parameterized.class)
+
 
 public class GriewankEvolutionaryAlgorithmOnePopulationTest {
 
@@ -30,7 +32,7 @@ public class GriewankEvolutionaryAlgorithmOnePopulationTest {
     }
     @Before
     public void init() {
-        executionTime = 40;
+        executionTime = 30;
         function = new GriewankFunction();
     }
 
@@ -47,26 +49,26 @@ public class GriewankEvolutionaryAlgorithmOnePopulationTest {
         Population pop_10000_50 = new Population(10000, 50);
         return Arrays.asList(new Object[][] {
                 { 1, pop_10000_100},
-                { 2, pop_10000_100},
-                { 4, pop_10000_100},
-                { 8, pop_10000_100},
-                { 12, pop_10000_100},
-                { 16, pop_10000_100},
-                { 20, pop_10000_100},
+//                { 2, pop_10000_100},
+//                { 4, pop_10000_100},
+//                { 8, pop_10000_100},
+//                { 12, pop_10000_100},
+//                { 16, pop_10000_100},
+//                { 20, pop_10000_100},
                 { 1, pop_10000_10},
-                { 2, pop_10000_10},
-                { 4, pop_10000_10},
-                { 8, pop_10000_10},
-                { 12, pop_10000_10},
-                { 16, pop_10000_10},
-                { 20, pop_10000_10},
+//                { 2, pop_10000_10},
+//                { 4, pop_10000_10},
+//                { 8, pop_10000_10},
+//                { 12, pop_10000_10},
+//                { 16, pop_10000_10},
+//                { 20, pop_10000_10},
                 { 1, pop_10000_50},
-                { 2, pop_10000_50},
-                { 4, pop_10000_50},
-                { 8, pop_10000_50},
-                { 12, pop_10000_50},
-                { 16, pop_10000_50},
-                { 20, pop_10000_50}
+//                { 2, pop_10000_50},
+//                { 4, pop_10000_50},
+//                { 8, pop_10000_50},
+//                { 12, pop_10000_50},
+//                { 16, pop_10000_50},
+//                { 20, pop_10000_50}
         });
     }
 
@@ -75,7 +77,7 @@ public class GriewankEvolutionaryAlgorithmOnePopulationTest {
         EvolutionaryAlgorithmOnePopulation eaop = new EvolutionaryAlgorithmOnePopulation(
                 numberOfThreedToFork, function
         );
-        double [] result = new double[3];
+        double [] result = new double[5];
         double mean = 0;
         double variance = 0;
 
