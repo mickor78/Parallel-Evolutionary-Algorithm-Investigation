@@ -5,6 +5,7 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunction;
 import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunctionStream;
+import zad5.ppor.weiti.pw.edu.pl.functions.GriewankFunctionGPU;
 import zad5.ppor.weiti.pw.edu.pl.model.Genotype;
 import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
@@ -27,13 +28,14 @@ public class GriewankFunctionTest {
         public Genotype gen2;
         public GriewankFunction gf;
         public GriewankFunctionStream gfs;
+        public GriewankFunctionGPU gfgpu;
 
 
         @Setup
         public void init() {
             gf = new GriewankFunction();
             gfs = new GriewankFunctionStream();
-
+            gfgpu = new GriewankFunctionGPU();
 
             gen1 = new Population(1,1000).getPopulation().get(0);
             gen2 = new Population(1,1000000).getPopulation().get(0);
@@ -128,6 +130,43 @@ public class GriewankFunctionTest {
     public static void griewankfunction_stream_1M_2(BeforeState state, Blackhole blackhole) {
         final int parallelism = 2;
         calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.gfs);
+    }
+
+
+    @Benchmark
+    public static void griewankfunction_gpu_1000_1(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.gfgpu);
+    }
+
+    @Benchmark
+    public static void griewankfunction_gpu_1000_2(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 2;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.gfgpu);
+    }
+
+    @Benchmark
+    public static void griewankfunction_gpu_1000_8(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.gfgpu);
+    }
+
+    @Benchmark
+    public static void griewankfunction_gpu_1M_8(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 8;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.gfgpu);
+    }
+
+    @Benchmark
+    public static void griewankfunction_gpu_1M_1(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.gfgpu);
+    }
+
+    @Benchmark
+    public static void griewankfunction_gpu_1M_2(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 2;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.gfgpu);
     }
 
 

@@ -5,6 +5,7 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunction;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunctionStream;
+import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunctionGPU;
 import zad5.ppor.weiti.pw.edu.pl.model.Genotype;
 import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
@@ -26,12 +27,14 @@ public class AcleyFunctionTest {
         public Genotype gen2;
         public AcleyFunction af;
         public AcleyFunctionStream afs;
+        public AcleyFunctionGPU afgpu;
 
 
         @Setup
         public void init() {
             af = new AcleyFunction();
             afs = new AcleyFunctionStream();
+            afgpu = new AcleyFunctionGPU();
 
             gen1 = new Population(1,1000).getPopulation().get(0);
             gen2 = new Population(1,1000000).getPopulation().get(0);
@@ -128,6 +131,43 @@ public class AcleyFunctionTest {
     public static void acleyfunction_stream_1M_2(BeforeState state, Blackhole blackhole) {
         final int parallelism = 2;
         calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.afs);
+    }
+
+
+    @Benchmark
+    public static void acleyfunction_gpu_1000_1(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.afgpu);
+    }
+
+    @Benchmark
+    public static void acleyfunction_gpu_1000_2(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 2;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.afgpu);
+    }
+
+    @Benchmark
+    public static void acleyfunction_gpu_1000_8(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen1.getGenotype(), state.afgpu);
+    }
+
+    @Benchmark
+    public static void acleyfunction_gpu_1M_8(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 8;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.afgpu);
+    }
+
+    @Benchmark
+    public static void acleyfunction_gpu_1M_1(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 1;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.afgpu);
+    }
+
+    @Benchmark
+    public static void acleyfunction_gpu_1M_2(BeforeState state, Blackhole blackhole) {
+        final int parallelism = 2;
+        calculateValue(blackhole, parallelism, state.gen2.getGenotype(), state.afgpu);
     }
 
 
