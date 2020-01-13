@@ -13,11 +13,11 @@ public class Main {
     public static void main(String[] args) {
         Population x = new Population(
                 10000,
-                100
+                20
         );
         Population y = new Population(
                 10000,
-                100
+                50
         );
 
         AcleyFunction af = new AcleyFunction();
@@ -29,7 +29,7 @@ public class Main {
         );
 
         EvolutionaryAlgorithmFewPopulations eafp = new EvolutionaryAlgorithmFewPopulations(
-                af, 4,4
+                af, 4,8
         );
 
 

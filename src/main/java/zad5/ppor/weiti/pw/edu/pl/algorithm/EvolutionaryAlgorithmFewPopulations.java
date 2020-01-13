@@ -98,6 +98,7 @@ public class EvolutionaryAlgorithmFewPopulations {
                 .toArray();
         new PrintSolution().showPlot(temp, x);
         try {
+            System.out.println("Press enter");
             System.in.read();
         } catch (IOException e) {
             e.printStackTrace();
