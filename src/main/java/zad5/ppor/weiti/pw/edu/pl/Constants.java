@@ -1,5 +1,8 @@
 package zad5.ppor.weiti.pw.edu.pl;
 
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaSparkContext;
+
 public class Constants {
 
     public static class Range {
@@ -48,6 +51,16 @@ public class Constants {
 
     }
     public static class Presentation{
-        public static final boolean MODE = true;
+        public static final boolean MODE = false;
+    }
+
+    public static class SparkConf{
+        public static JavaSparkContext sc = null;
+
+        public static void createContext() {
+            System.setProperty("hadoop.home.dir", "C:/winutils");
+            org.apache.spark.SparkConf sparkConf = new org.apache.spark.SparkConf().setAppName("Calculate func value").setMaster("local[2]").set("spark.executor.memory","2g");
+            sc = new JavaSparkContext(sparkConf);
+        }
     }
 }

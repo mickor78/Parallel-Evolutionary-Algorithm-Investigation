@@ -7,11 +7,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import zad5.ppor.weiti.pw.edu.pl.algorithm.EvolutionaryAlgorithmFewPopulations;
 import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunction;
+import zad5.ppor.weiti.pw.edu.pl.functions.AcleyFunctionSpark;
 import zad5.ppor.weiti.pw.edu.pl.model.Population;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Function;
+
+import static zad5.ppor.weiti.pw.edu.pl.Constants.SparkConf.createContext;
 
 @RunWith(Parameterized.class)
 
@@ -35,6 +38,7 @@ public class AcleyEvolutionaryAlgorithmFewPopulationTest {
 
     @BeforeClass
     public static void before() {
+        createContext();
         System.out.println("pop num\t\tfeat\t\tthread_alg\t\tthread_pop\t\tnum_of_div\t\tmean\t\tvariance");
 
     }
@@ -137,8 +141,8 @@ public class AcleyEvolutionaryAlgorithmFewPopulationTest {
 
     @Before
     public void init() {
-        executionTime = 30;
-        function = new AcleyFunction();
+        executionTime = 5;
+        function = new AcleyFunctionSpark();
     }
 
     @Test
